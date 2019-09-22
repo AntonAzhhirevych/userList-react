@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const ErrorNotification = ({ error }) => (
   <Grid container justify="center">
-    <h1>Whoops, something went wrong: {error}</h1>
+    <h1>Ой, что-то пошло не так: {error}</h1>
   </Grid>
 );
 

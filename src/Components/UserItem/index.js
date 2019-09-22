@@ -38,6 +38,7 @@ const styles = () => ({
   name: {
     fontSize: 18,
     fontWeight: 700,
+    color: '#424242',
   },
   card: {
     width: '100%',

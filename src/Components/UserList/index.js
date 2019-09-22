@@ -2,6 +2,7 @@ import React from 'react';
 import { withStyles } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import List from '@material-ui/core/List';
+import Typography from '@material-ui/core/Typography';
 import shortid from 'shortid';
 import UserItem from '../UserItem';
 
@@ -16,11 +17,18 @@ const UserList = ({
 }) => {
   const filteredUsers = getFilteredUsers(list, name, lastname, age, sex);
   return (
-    <List className={classes.list}>
-      {filteredUsers.map(user => (
-        <UserItem key={shortid()} item={user} />
-      ))}
-    </List>
+    <>
+      {filteredUsers.length === 0 && (
+        <Typography className={classes.text}>
+          Пользователь по результату поиска не найден!!!
+        </Typography>
+      )}
+      <List className={classes.list}>
+        {filteredUsers.map(user => (
+          <UserItem key={shortid()} item={user} />
+        ))}
+      </List>
+    </>
   );
 };
 
@@ -47,6 +55,7 @@ UserList.propTypes = {
   getFilteredUsers: PropTypes.func.isRequired,
   classes: PropTypes.shape({
     list: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
   }).isRequired,
 };
 
@@ -57,6 +66,11 @@ const styles = () => ({
     flexWrap: 'wrap',
     margin: '0 auto',
     width: 800,
+  },
+  text: {
+    margin: '60px auto 0 auto',
+    fontSize: 36,
+    color: '#424242',
   },
 });
 
